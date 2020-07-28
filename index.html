@@ -1,31 +1,50 @@
 <html>
 <body>
     <p>
-        <input type="checkbox" onclick="onTap(this)" id="gyoza">Gyoza
-        <input type="checkbox" onclick="onTap(this)" id="gyoza_vegan">Gyoza_V
+        <input type="checkbox" onclick="onTap(this)" id="gyoza">Gyoza 4.5
+        <input type="checkbox" onclick="onTap(this)" id="gyoza_vegan">Gyoza_V 5.0
         <br>
-        <input type="checkbox" onclick="onTap(this)" id="kimchi">kimchi
-        <input type="checkbox" onclick="onTap(this)" id="fried_eryngii">eryngii
+        <input type="checkbox" onclick="onTap(this)" id="kimchi">kimchi 3.7
+        <input type="checkbox" onclick="onTap(this)" id="fried_eryngii">eryngii 3.9
 
         <br>
-        <input type="checkbox" onclick="onTap(this)" id="karaage">karaage
-        <input type="checkbox" onclick="onTap(this)" id="karaage_V">karaage_V
+        <input type="checkbox" onclick="onTap(this)" id="karaage">karaage 4.9
+        <input type="checkbox" onclick="onTap(this)" id="karaage_V">karaage_V 5.5
 
         <br>
-        <input type="checkbox" onclick="onTap(this)" id="Edamame">Edamame
-        <input type="checkbox" onclick="onTap(this)" id="Wakame_Salad">Wakame Salad
+        <input type="checkbox" onclick="onTap(this)" id="Edamame">Edamame 3.9
+        <input type="checkbox" onclick="onTap(this)" id="Wakame_Salad">Wakame Salad 3.5
     </p>
 
     <hr>
+    <input type="checkbox" onclick="onTap(this)" id="Shoyu">Shoyu 10.5
+    <input type="checkbox" onclick="onTap(this)" id="Shoyu_V">Shoyu_V 10.5
+
+    <br>
+    <input type="checkbox" onclick="onTap(this)" id="Torikotsu">Torikotsu 11.5
+    <input type="checkbox" onclick="onTap(this)" id="Torikotsu_V">Torikotsu_V 11.5
+    
+    <br>
+    <input type="checkbox" onclick="onTap(this)" id="Miso">Miso 10.5
+    <input type="checkbox" onclick="onTap(this)" id="Miso_V">Miso_V 10.5
+
+    <br>
+    <input type="checkbox" onclick="onTap(this)" id="TanTan">TanTan 11.5
+    <input type="checkbox" onclick="onTap(this)" id="TanTan_V">TanTan_V 11.5
+    
     <br>
     <hr>
+
     <div id=current_item></div>
     <br>
     <div id="subtotal_display">0</div>
     <br>
-    <!-- change name to subtotal_button. tag name to id-->
-    <button name="subtotal" onclick="test()">subtotal</button>
 
+    <button id="subtotal_button" onclick="test()">subtotal</button>
+
+    <!-- TODO: gyaza objectととか作って、listに追加するようにする方がいいかなあ？-->
+    <!-- TODO: factory.get(Edamame)とか。-->
+    <!-- TODO: 小クラスとか作れるんかなあ？SideDishesクラスの小クラスのedamameとか-->
 
     <script language="javascript" type="text/javascript">
 
@@ -38,10 +57,20 @@
             "karaage_V": 5.5,
             "Edamame": 3.9,
             "Wakame_Salad": 3.5,
+            "Shoyu": 10.5,
+            "Shoyu_V":10.5,
+            "Torikotsu": 11.5,
+            "Torikotsu_V": 11.5,
+            "Miso": 10.5,
+            "Miso_V": 10.5,
+            "TanTan": 11.5,
+            "TanTan_V": 11.5
         }
+
 
         let subtotalDisplay = document.querySelector("#subtotal_display");
         let currentItemDisplay = document.querySelector("#current_item");
+        
         function onTap(elem) {
 
             const itemName = elem.id
@@ -49,6 +78,7 @@
 
             if (elem.checked) {
                 subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
+                
                 currentItemDisplay.innerText = "last: " + itemName + ":" + itemPrice;
             } else {
                 subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - itemPrice;
@@ -56,6 +86,7 @@
             }
             console.log(subtotalDisplay.innerText);
         }
+
 
         function test() {
             subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + 2.5;
