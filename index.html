@@ -1,4 +1,5 @@
 <html>
+
 <body>
 
 
@@ -22,45 +23,45 @@
     <br>
     <hr>
     <div id=current_item></div>
-<br>
-<div id="subtotal_display">0</div>
-<br>
-<!-- change name to subtotal_button. tag name to id-->
-<button name="subtotal" onclick="test()">subtotal</button>
+    <br>
+    <div id="subtotal_display">0</div>
+    <br>
+    <!-- change name to subtotal_button. tag name to id-->
+    <button name="subtotal" onclick="test()">subtotal</button>
 
-<script language="javascript" type="text/javascript">
-    const price = {
-        "gyoza":4.5,
-        "gyoza_vegan":5.0,
-        "kimchi":3.7,
-        "fried_eryngii":3.9,
-        "karaage":4.9,
-        "karaage_V":5.5,
-        "Edamame":3.9,
-        "Wakame_Salad":3.5,
-    }
+    <script language="javascript" type="text/javascript">
+        const price = {
+            "gyoza": 4.5,
+            "gyoza_vegan": 5.0,
+            "kimchi": 3.7,
+            "fried_eryngii": 3.9,
+            "karaage": 4.9,
+            "karaage_V": 5.5,
+            "Edamame": 3.9,
+            "Wakame_Salad": 3.5,
+        }
 
-    let subtotalDisplay = document.querySelector("#subtotal_display");
-    let currentItemDisplay = document.querySelector("#current_item");
-    function onTap(elem) {
+        let subtotalDisplay = document.querySelector("#subtotal_display");
+        let currentItemDisplay = document.querySelector("#current_item");
+        function onTap(elem) {
 
-        const itemName = elem.id
-        const itemPrice = price[elem.id];
+            const itemName = elem.id
+            const itemPrice = price[elem.id];
 
-        if (elem.checked) {
-            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
-            currentItemDisplay.innerText = "last: " +itemName + ":" + itemPrice;
-        } else {
-            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - itemPrice;
-            currentItemDisplay.innerText = "";
-        }        
-        console.log(subtotalDisplay.innerText);
-    }
+            if (elem.checked) {
+                subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
+                currentItemDisplay.innerText = "last: " + itemName + ":" + itemPrice;
+            } else {
+                subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - itemPrice;
+                currentItemDisplay.innerText = "";
+            }
+            console.log(subtotalDisplay.innerText);
+        }
 
-    function test(){
-        subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + 2.5;
-        console.log(subtotalDisplay.innerText);
-    }
+        function test() {
+            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + 2.5;
+            console.log(subtotalDisplay.innerText);
+        }
 
     </script>
 
