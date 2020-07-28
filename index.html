@@ -1,7 +1,9 @@
 <html>
 <body>
+
+
     <p>
-        <input type="checkbox" onclick="onTap(this)" name="gyoza">Gyoza
+        <input type="checkbox" onclick="onTap(this)" id="gyoza">Gyoza
         <input type="checkbox" name="gyoza_vegan">Gyoza_V
         <br>
         <input type="checkbox" name="kimchi">kimchi
@@ -17,11 +19,12 @@
 
     <hr>
 <br>
-<div name="subtotal_display"></div>
+<div id="subtotal_display">0</div>
 <br>
-<button name="subtotal">subtotal</button>
+<!-- change name to subtotal_button. tag name to id-->
+<button name="subtotal" onclick="test()">subtotal</button>
 
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
     const price = {
         "gyoza":4.5,
         "gyoza_vegan":5.0,
@@ -33,10 +36,16 @@
         "Wakame_Salad":3.5,
     }
 
-    let subtotalDisplay = document.querySelector("subtotal_display").value;
+    let subtotalDisplay = document.querySelector("#subtotal_display");
     function onTap(elem) {
-        console.log("hello onTap");
-        subtotalDisplay = subtotalDisplay + price[elem.name];
+        // console.log("hello onTap");
+        subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + price[elem.id];
+        console.log(subtotalDisplay.innerText);
+    }
+
+    function test(){
+        subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + 2.5;
+        console.log(subtotalDisplay.innerText);
     }
 
     </script>
