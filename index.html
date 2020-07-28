@@ -1,23 +1,46 @@
-<HTML>
-<script>
-</script>
-
+<html>
 <body>
     <p>
-        <input type="checkbox" name="gyoza">Gyoza
+        <input type="checkbox" onclick="onTap(this)" name="gyoza">Gyoza
         <input type="checkbox" name="gyoza_vegan">Gyoza_V
         <br>
         <input type="checkbox" name="kimchi">kimchi
-        <input type="checkbox" name="eryngii">eryngii
+        <input type="checkbox" name="fried_eryngii">eryngii
 
-        <input type="checkbox" name="kimchi">karaage
-        <input type="checkbox" name="eryngii">karaage_V
+        <br>
+        <input type="checkbox" name="karaage">karaage
+        <input type="checkbox" name="karaage_V">karaage_V
 
-        <input type="checkbox" name="kimchi">Edamame
-        <input type="checkbox" name="kimchi">Wakame Salad
-
+        <input type="checkbox" name="Edamame">Edamame
+        <input type="checkbox" name="Wakame_Salad">Wakame Salad
     </p>
+
+    <hr>
+<br>
+<div name="subtotal_display"></div>
+<br>
+<button name="subtotal">subtotal</button>
+
+    <script language="javascript" type="text/javascript">
+    const price = {
+        "gyoza":4.5,
+        "gyoza_vegan":5.0,
+        "kimchi":3.7,
+        "fried_eryngii":3.9,
+        "karaage":4.9,
+        "karaage_V":5.5,
+        "Edamame":3.9,
+        "Wakame_Salad":3.5,
+    }
+
+    let subtotalDisplay = document.querySelector("subtotal_display").value;
+    function onTap(elem) {
+        console.log("hello onTap");
+        subtotalDisplay = subtotalDisplay + price[elem.name];
+    }
+
+    </script>
 
 </body>
 
-</HTML>
+</html>
