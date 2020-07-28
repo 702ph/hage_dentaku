@@ -38,8 +38,11 @@
 
     let subtotalDisplay = document.querySelector("#subtotal_display");
     function onTap(elem) {
-        // console.log("hello onTap");
-        subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + price[elem.id];
+        if (elem.checked) {
+            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + price[elem.id];
+        } else {
+            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - price[elem.id];
+        }        
         console.log(subtotalDisplay.innerText);
     }
 
