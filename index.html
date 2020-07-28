@@ -18,6 +18,8 @@
     </p>
 
     <hr>
+    <br>
+    <div id=current_item></div>
 <br>
 <div id="subtotal_display">0</div>
 <br>
@@ -37,11 +39,18 @@
     }
 
     let subtotalDisplay = document.querySelector("#subtotal_display");
+    let currentItemDisplay = document.querySelector("#current_item");
     function onTap(elem) {
+
+        const itemName = elem.id
+        const itemPrice = price[elem.id];
+
         if (elem.checked) {
-            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + price[elem.id];
+            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
+            currentItemDisplay.innerText = "last: " +itemName + ":" + itemPrice;
         } else {
-            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - price[elem.id];
+            subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - itemPrice;
+            currentItemDisplay.innerText = "";
         }        
         console.log(subtotalDisplay.innerText);
     }
