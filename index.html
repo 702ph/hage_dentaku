@@ -283,11 +283,11 @@
             const itemPrice = price[itemName];
 
             if (elem.checked) {
-                subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
+                subtotalDisplay.innerText = Number(subtotalDisplay.innerText) + itemPrice;
 
                 currentItemDisplay.innerText = "last: " + itemName + ":" + itemPrice;
             } else {
-                subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) - itemPrice;
+                subtotalDisplay.innerText = Number(subtotalDisplay.innerText) - itemPrice;
                 currentItemDisplay.innerText = "";
             }
             console.log(subtotalDisplay.innerText);
