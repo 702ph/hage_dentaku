@@ -16,47 +16,8 @@
 
 
     <div　id="menu">
-        <div id="side_dishes">
-
-            <input type="checkbox" onclick="onTap(this)" id="gyoza">
-            <label id="gyoza_label" for=gyoza>aaa</label>
-            <input type="checkbox" onclick="onTap(this)" id="gyoza_vegan">
-            <label for=gyoza_vegan></label>
-
-            <br>
-            <input type="checkbox" onclick="onTap(this)" id="kimchi">
-            <label for=kimchi></label>
-            <input type="checkbox" onclick="onTap(this)" id="fried_eryngii">
-            <label for=fried_eryngii></label>
-
-            <br>
-            <input type="checkbox" onclick="onTap(this)" id="karaage">
-            <label for=karaage></label>
-            <input type="checkbox" onclick="onTap(this)" id="karaage_V">
-            <label for=karaage_V></label>
-
-            <br>
-            <input type="checkbox" onclick="onTap(this)" id="Edamame">
-            <label for=Edamame></label>
-
-            <input type="checkbox" onclick="onTap(this)" id="Wakame_Salad">
-            <label for=Wakame_Salad></label>
-        </div>
-
-        <hr>
-        <input type="checkbox" onclick="onTap(this)" id="Shoyu">Shoyu 10.5
-
         <br>
-        <input type="checkbox" onclick="onTap(this)" id="Torikotsu">Torikotsu 11.5
-
-        <br>
-        <input type="checkbox" onclick="onTap(this)" id="Miso">Miso 10.5
-
-        <br>
-        <input type="checkbox" onclick="onTap(this)" id="TanTan">TanTan 11.5
-        
-        <hr>
-        <div id="finger_food_area"></div>
+        <div id="side_dishes_area"></div>
 
         <hr>
         <div id="ramen_area"></div>
@@ -74,7 +35,7 @@
         <div id="cold_drinks_area"></div>
     </div>
 
-    <!-- display area-->
+    <!-- subtotal display area-->
     <hr>
     <text id=current_item>last: </text>
     <br>
@@ -331,12 +292,12 @@
         //TODO: これ以降も自動化したい
 
         // add item for finger food
-        let fingerFoodArea = document.querySelector("#finger_food_area");
+        let fingerFoodArea = document.querySelector("#side_dishes_area");
         addFoodLineBreak(fingerFoodArea, fingerFoodPriceList, [2,4,6]);
 
         // add item for finger food
         let ramenArea = document.querySelector("#ramen_area");
-        addFoodLineBreak(ramenArea, ramenPriceList, [1,2,3]);
+        addFoodLineBreak(ramenArea, ramenPriceList, [0,1,2,3]);
 
         // add item for extra toppings
         let extraToppingArea = document.querySelector("#extra_topping_area");
