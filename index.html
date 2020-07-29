@@ -1,6 +1,20 @@
 <html>
 
 <body>
+
+    <style type="text/css">
+        .bg_white {
+            background-color: #ffffff;
+            font-weight: bold;
+        }
+
+        .bg_on_focus {
+            background-color: hsl(51, 100%, 50%);
+            font-weight: bold;
+        }
+    </style>
+
+
     <div　id="menu">
         <div id="side_dishes">
 
@@ -71,11 +85,11 @@
     <!-- TODO: お客さん申し出額の間違い検出を実装すること -->
     <br>
     申し出額(チップ込)：
-    <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()">
+    <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()" onblur="calcOnBlur(this)" onfocus="bgChangeIn(this)">
 
     <br>
     受取額(チップ込)：
-    <input type="number" pattern="\d*" id="sum_received" onchange="calcChange()">
+    <input type="number" pattern="\d*" id="sum_received" onchange="calcChange()" onblur="calcOnBlur(this)" onfocus="bgChangeIn(this)">
 
     <br>
     <br>
@@ -83,7 +97,7 @@
 
     <!-- <button id="test_button" onclick="calcChange()">test</button> -->
     <button id="rest_button" onclick="reset()">CLEAR</button>
-    
+
 
     <!-- <button id="subtotal_button" onclick="test()">subtotal</button> -->
 
@@ -93,7 +107,35 @@
 
     <script language="javascript" type="text/javascript">
 
-        function reset(){
+        function incheck(obj) {
+            var str = obj.value;
+            if (str.match(/[^0-9]/g)) {
+                alert("半角数値以外が入力されています");
+                obj.focus();
+            } else {
+                obj.className = "bg_white";
+            }
+        }
+
+
+        //todo: CSSもやる気なく適応。もはや玉虫色。
+        function bgChangeIn(obj) {
+            obj.className = "bg_on_focus";
+        }
+
+
+        function bgChangeOut(obj) {
+            obj.className = "bg_white";
+        }
+
+
+        function calcOnBlur(elem) {
+            bgChangeOut(elem);
+            calcChange();
+        }
+
+
+        function reset() {
             let checkbox = document.querySelectorAll('input[type="checkbox"]');
             let input = document.querySelectorAll('input[type="number"]');
 
@@ -107,6 +149,7 @@
             subtotalDisplay.innerText = "0";
             document.querySelector("#change_display").innerText = "";//統一感がないが直すやる気なし。
         }
+
 
         function calcChange() {
             const sumAsked = document.querySelector("#sum_asked");
@@ -232,7 +275,7 @@
         // add food item with line break
         // (display area, pricelist, position for line break)
         function addFoodLineBreak(area, priceList, lineBreak) {
-            
+
             let index = 0;
             for (let [key, value] of Object.entries(priceList)) {
 
@@ -252,7 +295,7 @@
                 // lineBreakNumber = lineBreak[0];
                 // isLineBreak = (index === lineBreakNumber)
                 if (index === lineBreak[0]) {
-                // if (isLineBreak){
+                    // if (isLineBreak){
                     const br = document.createElement("br");
                     area.appendChild(br);
                     lineBreak.shift();
@@ -276,11 +319,11 @@
 
         // add item for warm drinks
         let warmDrinksArea = document.querySelector("#warm_drinks_area");
-        addFoodLineBreak(warmDrinksArea, warmDrinksPriceList, [1,3]);
+        addFoodLineBreak(warmDrinksArea, warmDrinksPriceList, [1, 3]);
 
         // add item for cold drinks
         let coldDrinksArea = document.querySelector("#cold_drinks_area");
-        addFoodLineBreak(coldDrinksArea, coldDrinksPriceList, [2,5,7]);
+        addFoodLineBreak(coldDrinksArea, coldDrinksPriceList, [2, 5, 7]);
 
 
         //subtotal area
