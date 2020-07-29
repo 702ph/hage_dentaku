@@ -99,6 +99,12 @@
 
             checkbox.forEach(elem => elem.checked = false);
             input.forEach(elem => elem.value = "");
+
+            // let currentItemDisplay = document.querySelector("#current_item");
+            // let subtotalDisplay = document.querySelector("#subtotal_display");
+
+            currentItemDisplay.innerText = "";
+            subtotalDisplay.innerText = "0";
         }
 
         function calcChange() {
