@@ -60,7 +60,7 @@
 
     <!-- display area-->
     <hr>
-    <div id=current_item></div>
+    <text id=current_item>last: </text>
     <br>
     合計額:
     <text id="subtotal_display">0</text>
@@ -81,7 +81,9 @@
     <br>
 
 
-    <button id="test_button" onclick="calcChange()">test</button>
+    <!-- <button id="test_button" onclick="calcChange()">test</button> -->
+    <button id="rest_button" onclick="reset()">CLEAR</button>
+    
 
     <!-- <button id="subtotal_button" onclick="test()">subtotal</button> -->
 
@@ -90,6 +92,14 @@
     <!-- TODO: 子クラスとか作れるんかなあ？SideDishesクラスの小クラスのedamameとか-->
 
     <script language="javascript" type="text/javascript">
+
+        function reset(){
+            let checkbox = document.querySelectorAll('input[type="checkbox"]');
+            let input = document.querySelectorAll('input[type="number"]');
+
+            checkbox.forEach(elem => elem.checked = false);
+            input.forEach(elem => elem.value = "");
+        }
 
         function calcChange() {
             const sumAsked = document.querySelector("#sum_asked");
