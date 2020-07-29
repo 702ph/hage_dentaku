@@ -71,11 +71,11 @@
     <!-- TODO: お客さん申し出額の間違い検出を実装すること -->
     <br>
     申し出額(チップ込)：
-    <input type="input" id="sum_asked" onchange="calcChange()">
+    <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()">
 
     <br>
     受取額(チップ込)：
-    <input type="input" id="sum_received" onchange="calcChange()">
+    <input type="number" pattern="\d*" id="sum_received" onchange="calcChange()">
 
     <br>
     <br>
@@ -97,13 +97,17 @@
             let changeDisplay = document.querySelector("#change_display");
 
             if (!(sumAsked.value === "") && (Number(sumAsked.value) < Number(subtotalDisplay.innerText))) {
-                changeDisplay.innerText = "エラー❗お客さんの申し出額が足りていない！！";
+                changeDisplay.innerText = "エラー❗お客さんの申し出額が飲食合計額を下回っている！";
             }
 
-            if (!(sumAsked.value === "") && !(sumReceived.value === "")) {
+            else if (!(sumReceived.value === "") && (Number(sumReceived.value) < Number(subtotalDisplay.innerText))) {
+                changeDisplay.innerText = "エラー❗お客さんからの受取額が飲食合計額を下回っている！！";
+            }
+
+            else if (!(sumAsked.value === "") && !(sumReceived.value === "")) {
                 //好奇心でNumber()を使用している
                 const change = Number(sumReceived.value) - Number(sumAsked.value);
-                changeDisplay.innerText = (change < 0) ? "エラー！！受取額が少ない！" : change;
+                changeDisplay.innerText = (change < 0) ? "エラー❗受取額は申し出額より多いこと！！" : change;
             }
         }
 
