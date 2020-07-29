@@ -233,26 +233,6 @@
         Object.assign(price, otherPriceList);
 
 
-        // add food
-        function addFood(area, priceList) {
-            for (let [key, value] of Object.entries(priceList)) {
-                let food = document.createElement("Input");
-                food.setAttribute("type", "checkbox");
-                food.setAttribute("onclick", "onTap(this)");
-                food.setAttribute("id", key)
-                area.appendChild(food);
-
-                let label = document.createElement("Label");
-                label.setAttribute("for", key);
-                label.innerHTML = key + " " + value + " ";
-                area.appendChild(label);
-
-                // const br = document.createElement("br"); 
-                // extraToppingArea.appendChild(br);
-            }
-        }
-
-
         // add food item with line break
         // (display area, pricelist, position for line break)
         function addFoodLineBreak(area, priceList, lineBreak) {
