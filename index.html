@@ -130,7 +130,7 @@
             else if (!(sumAsked.value === "") && !(sumReceived.value === "")) {
                 //好奇心でNumber()を使用している
                 const change = Number(sumReceived.value) - Number(sumAsked.value);
-                changeDisplay.innerText = (change < 0) ? "エラー❗受取額は申し出額より多いこと！！" : change;
+                changeDisplay.innerText = (change < 0) ? "エラー❗受取額は申し出額より多くなければならない！！" : change;
             }
         }
 
