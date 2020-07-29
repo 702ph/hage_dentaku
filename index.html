@@ -102,7 +102,7 @@
         //下記より新バージョン//
 
         //メニュー自体の自動生成。まずはextra toppingから。
-        const extraToppingPrice = {
+        const extraToppingPriceList = {
             "egg": 1.0,
             "egg_v": 1.5,
             "naruto": 1.0,
@@ -112,7 +112,46 @@
             "beyond_meat": 2.0,
             "eryngii": 1.5,
             "big_portion": 3.0
-        }
+        };
+
+        const dessertPriceList = {
+            "mochi": 3.5,
+            "stick_ice": 2.5 
+        };
+
+        const warmDrinksPriceList = {
+            "yuzu": 2.8,
+            "plum": 2.8,
+            "ginger":2.8,
+            "genmaicha":2.8,
+            "houjicha":2.8,
+        };
+
+        const coldDrinksPriceList = {
+            "erdinger": 3.5,
+            "cola": 2.8,
+            "sprite": 2.8, 
+            "ramune": 3.3,
+            "greentea": 3.5,
+            "aloe": 3.3,
+            "peach_mango_melon_soda": 3.3,
+            "mugicha": 3.5,
+            "calpico": 3.0,
+            "water": 2.8
+        };
+
+        const otherPriceList = {
+
+        };
+
+
+        //add to global price list.
+        //TODO: なんかこれ列挙してるのきれいではないわ。。。。
+        Object.assign(price, extraToppingPriceList);
+        Object.assign(price, dessertPriceList);
+        Object.assign(price, warmDrinksPriceList);
+        Object.assign(price, coldDrinksPriceList);
+        Object.assign(price, otherPriceList);
 
 
         // add food
@@ -135,19 +174,33 @@
         }
 
 
+        //TODO: これ以降も自動化したい
+        // add item for extra toppings
         let extraToppingArea = document.querySelector("#extra_topping_area");
-        addFood(extraToppingArea, extraToppingPrice);
+        addFood(extraToppingArea, extraToppingPriceList);
+
+        // add item for desert
+        let dessertArea = document.querySelector("#dessert_area");
+        addFood(dessertArea, dessertPriceList);
+
+        // add item for warm drinks
+        let warmDrinksArea = document.querySelector("#warm_drinks_area");
+        addFood(warmDrinksArea, warmDrinksPriceList);
+
+        // add item for cold drinks
+        let coldDrinksArea = document.querySelector("#cold_drinks_area");
+        addFood(coldDrinksArea, coldDrinksPriceList);
 
 
-
-
+        //subtotal area
         let subtotalDisplay = document.querySelector("#subtotal_display");
         let currentItemDisplay = document.querySelector("#current_item");
 
+        // calculation
         function onTap(elem) {
 
             const itemName = elem.id
-            const itemPrice = price[elem.id];
+            const itemPrice = price[itemName];
 
             if (elem.checked) {
                 subtotalDisplay.innerText = parseFloat(subtotalDisplay.innerText) + itemPrice;
