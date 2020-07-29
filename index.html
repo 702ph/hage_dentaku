@@ -134,31 +134,7 @@
             }
         }
 
-        //TODO: 将来的にはメニューとラベルのの自動生成もしたい。=>addFood()でした。
-        // const price = {
-        //     "gyoza": 4.5,
-        //     "gyoza_vegan": 5.0,
-        //     "kimchi": 3.7,
-        //     "fried_eryngii": 3.9,
-        //     "karaage": 4.9,
-        //     "karaage_V": 5.5,
-        //     "Edamame": 3.9,
-        //     "Wakame_Salad": 3.5,
-        //     "Shoyu": 10.5,
-        //     // "Shoyu_V": 10.5,
-        //     "Torikotsu": 11.5,
-        //     // "Torikotsu_V": 11.5,
-        //     "Miso": 10.5,
-        //     // "Miso_V": 10.5,
-        //     "TanTan": 11.5,
-        //     // "TanTan_V": 11.5
-        // }
-
-        //ラベルに金額と商品名を自動セット
-        // let foods = document.querySelectorAll('label');
-        // foods.forEach(label => label.innerHTML = label.htmlFor + " " + price[label.htmlFor]);
-
-
+        //商品メニュー
         const price = {}
 
         const sideDishesPriceList = {
@@ -179,10 +155,6 @@
             "TanTan": 11.5,
         }
 
-
-        //下記より新バージョン//
-
-        //メニュー自体の自動生成。まずはextra toppingから。
         const extraToppingPriceList = {
             "egg": 1.0,
             "egg_v": 1.5,
