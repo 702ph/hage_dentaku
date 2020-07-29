@@ -135,31 +135,33 @@
         }
 
         //TODO: 将来的にはメニューとラベルのの自動生成もしたい。=>addFood()でした。
-        const price = {
-            "gyoza": 4.5,
-            "gyoza_vegan": 5.0,
-            "kimchi": 3.7,
-            "fried_eryngii": 3.9,
-            "karaage": 4.9,
-            "karaage_V": 5.5,
-            "Edamame": 3.9,
-            "Wakame_Salad": 3.5,
-            "Shoyu": 10.5,
-            // "Shoyu_V": 10.5,
-            "Torikotsu": 11.5,
-            // "Torikotsu_V": 11.5,
-            "Miso": 10.5,
-            // "Miso_V": 10.5,
-            "TanTan": 11.5,
-            // "TanTan_V": 11.5
-        }
+        // const price = {
+        //     "gyoza": 4.5,
+        //     "gyoza_vegan": 5.0,
+        //     "kimchi": 3.7,
+        //     "fried_eryngii": 3.9,
+        //     "karaage": 4.9,
+        //     "karaage_V": 5.5,
+        //     "Edamame": 3.9,
+        //     "Wakame_Salad": 3.5,
+        //     "Shoyu": 10.5,
+        //     // "Shoyu_V": 10.5,
+        //     "Torikotsu": 11.5,
+        //     // "Torikotsu_V": 11.5,
+        //     "Miso": 10.5,
+        //     // "Miso_V": 10.5,
+        //     "TanTan": 11.5,
+        //     // "TanTan_V": 11.5
+        // }
 
         //ラベルに金額と商品名を自動セット
-        let foods = document.querySelectorAll('label');
-        foods.forEach(label => label.innerHTML = label.htmlFor + " " + price[label.htmlFor]);
+        // let foods = document.querySelectorAll('label');
+        // foods.forEach(label => label.innerHTML = label.htmlFor + " " + price[label.htmlFor]);
 
 
-        const fingerFoodPriceList = {
+        const price = {}
+
+        const sideDishesPriceList = {
             "gyoza": 4.5,
             "gyoza_vegan": 5.0,
             "kimchi": 3.7,
@@ -226,6 +228,8 @@
 
         //add to global price list.
         //TODO: なんかこれ列挙してるのきれいではないわ。。。。
+        Object.assign(price, sideDishesPriceList);
+        Object.assign(price, ramenPriceList);
         Object.assign(price, extraToppingPriceList);
         Object.assign(price, dessertPriceList);
         Object.assign(price, warmDrinksPriceList);
@@ -235,7 +239,7 @@
 
         // add food item with line break
         // (display area, pricelist, position for line break)
-        function addFoodLineBreak(area, priceList, lineBreak) {
+        function addFoodItem(area, priceList, lineBreak) {
 
             let index = 0;
             for (let [key, value] of Object.entries(priceList)) {
@@ -272,28 +276,28 @@
         //TODO: これ以降も自動化したい
 
         // add item for finger food
-        let fingerFoodArea = document.querySelector("#side_dishes_area");
-        addFoodLineBreak(fingerFoodArea, fingerFoodPriceList, [2,4,6]);
+        let sideDishesArea = document.querySelector("#side_dishes_area");
+        addFoodItem(sideDishesArea, sideDishesPriceList, [2,4,6]);
 
         // add item for finger food
         let ramenArea = document.querySelector("#ramen_area");
-        addFoodLineBreak(ramenArea, ramenPriceList, [0,1,2,3]);
+        addFoodItem(ramenArea, ramenPriceList, [0,1,2,3]);
 
         // add item for extra toppings
         let extraToppingArea = document.querySelector("#extra_topping_area");
-        addFoodLineBreak(extraToppingArea, extraToppingPriceList, [1, 3, 5, 7]);
+        addFoodItem(extraToppingArea, extraToppingPriceList, [1, 3, 5, 7]);
 
         // add item for desert
         let dessertArea = document.querySelector("#dessert_area");
-        addFoodLineBreak(dessertArea, dessertPriceList, [2]);
+        addFoodItem(dessertArea, dessertPriceList, [2]);
 
         // add item for warm drinks
         let warmDrinksArea = document.querySelector("#warm_drinks_area");
-        addFoodLineBreak(warmDrinksArea, warmDrinksPriceList, [1, 3]);
+        addFoodItem(warmDrinksArea, warmDrinksPriceList, [1, 3]);
 
         // add item for cold drinks
         let coldDrinksArea = document.querySelector("#cold_drinks_area");
-        addFoodLineBreak(coldDrinksArea, coldDrinksPriceList, [2, 5, 6, 8]);
+        addFoodItem(coldDrinksArea, coldDrinksPriceList, [2, 5, 6, 8]);
 
 
         //subtotal area
