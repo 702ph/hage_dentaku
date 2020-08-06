@@ -61,7 +61,6 @@
     お釣り：<text id="change_display"></text>
 
 
-    <!-- TODO: お客さん申し出額の間違い検出を実装すること -->
     <br>
     申し出額(チップ込)：
     <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()" onblur="calcOnBlur(this)"
@@ -73,8 +72,6 @@
         onfocus="bgChangeIn(this)">
 
     <hr>
-
-    <!-- <button id="test_button" onclick="calcChange()">test</button> -->
     
     <div class="align_wrap">
     <button id="rest_button" onclick="reset()">CLEAR</button>
@@ -82,21 +79,16 @@
     <br>
 
 
-    <!-- <button id="subtotal_button" onclick="test()">subtotal</button> -->
-
     <!-- TODO: gyaza objectととか作って、listに追加するようにする方がいいかなあ？-->
     <!-- TODO: factory.get(Edamame)とか。-->
     <!-- TODO: 子クラスとか作れるんかなあ？SideDishesクラスの小クラスのedamameとか-->
 
     <script language="javascript" type="text/javascript">
 
-        function incheck(obj) {
-            var str = obj.value;
+        function checkNumber(obj) {
+            const str = obj.value;
             if (str.match(/[^0-9]/g)) {
                 alert("半角数値以外が入力されています");
-                obj.focus();
-            } else {
-                obj.className = "bg_white";
             }
         }
 
@@ -124,9 +116,6 @@
 
             checkbox.forEach(elem => elem.checked = false);
             input.forEach(elem => elem.value = "");
-
-            // let currentItemDisplay = document.querySelector("#current_item");
-            // let subtotalDisplay = document.querySelector("#subtotal_display");
 
             currentItemDisplay.innerText = "";
             subtotalDisplay.innerText = "0";
