@@ -28,6 +28,10 @@
             text-align: center;
         }
 
+        #subtotal_display {
+            background-color: #6633cc;
+            color: #ffffff;
+        }
     </style>
 
 
@@ -53,11 +57,11 @@
 
     <!-- subtotal display area-->
     <hr>
-    <text id=current_item>last: </text>
+    <text id=current_item>Last added: </text>
     <br>
-    合計額:<text id="subtotal_display">0</text>
+    合計額: <text id="subtotal_display">0</text>
     <br>
-    お釣り：<text id="change_display"></text>
+    お釣り： <text id="change_display"></text>
 
 
     <br>
@@ -71,9 +75,9 @@
         onfocus="bgChangeIn(this)">
 
     <hr>
-    
+
     <div class="align_wrap">
-    <button id="rest_button" onclick="reset()">CLEAR</button>
+        <button id="rest_button" onclick="reset()">CLEAR</button>
     </div>
     <br>
 
@@ -293,7 +297,7 @@
             if (elem.checked) {
                 subtotalDisplay.innerText = Number(subtotalDisplay.innerText) + itemPrice;
 
-                currentItemDisplay.innerText = "last: " + itemName + ":" + itemPrice;
+                currentItemDisplay.innerText = "Last added: " + itemName + ":" + itemPrice;
             } else {
                 subtotalDisplay.innerText = Number(subtotalDisplay.innerText) - itemPrice;
                 currentItemDisplay.innerText = "";
