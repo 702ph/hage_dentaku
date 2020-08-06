@@ -12,6 +12,10 @@
             background-color: hsl(51, 100%, 50%);
             font-weight: bold;
         }
+
+        body {
+            font-size: 18px;
+        }
     </style>
 
 
@@ -48,11 +52,13 @@
     <!-- TODO: お客さん申し出額の間違い検出を実装すること -->
     <br>
     申し出額(チップ込)：
-    <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()" onblur="calcOnBlur(this)" onfocus="bgChangeIn(this)">
+    <input type="number" pattern="\d*" id="sum_asked" onchange="calcChange()" onblur="calcOnBlur(this)"
+        onfocus="bgChangeIn(this)">
 
     <br>
     受取額(チップ込)：
-    <input type="number" pattern="\d*" id="sum_received" onchange="calcChange()" onblur="calcOnBlur(this)" onfocus="bgChangeIn(this)">
+    <input type="number" pattern="\d*" id="sum_received" onchange="calcChange()" onblur="calcOnBlur(this)"
+        onfocus="bgChangeIn(this)">
 
     <br>
     <br>
@@ -249,11 +255,11 @@
 
         // add item for finger food
         let sideDishesArea = document.querySelector("#side_dishes_area");
-        addFoodItem(sideDishesArea, sideDishesPriceList, [2,4,6]);
+        addFoodItem(sideDishesArea, sideDishesPriceList, [2, 4, 6]);
 
         // add item for finger food
         let ramenArea = document.querySelector("#ramen_area");
-        addFoodItem(ramenArea, ramenPriceList, [0,1,2,3]);
+        addFoodItem(ramenArea, ramenPriceList, [0, 1, 2, 3]);
 
         // add item for extra toppings
         let extraToppingArea = document.querySelector("#extra_topping_area");
