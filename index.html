@@ -41,7 +41,7 @@
         /* この名前のクラスにdivに与えて、そのdivでinputを加工必要がある。
         https://blog.raizzenet.com/change-size-checkbox/ */
         /* ちなみにまだ今回はこの.chkboxというクラスはないので下記のスタイルシートは適用されない */
-        .chkbox { 
+        .chkbox {
             margin: 0 0 10px 20px;
         }
 
@@ -86,7 +86,6 @@
             background-color: #06f;
             /* チェックした時の色 */
         }
-
     </style>
 
 
@@ -342,8 +341,8 @@
                     area.appendChild(br);
                     lineBreak.shift();
 
-                    console.log(index);
-                    console.log(lineBreak);
+                    // console.log(index);
+                    // console.log(lineBreak);
                 }
                 index++;
             }
@@ -386,12 +385,34 @@
         addFoodItem(otherItemArea, otherItemPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
 
+        // food item classes and factory
+        class FoodItem {
+            constructor(name, price) {
+                //this.id = id;
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+
+        class SideDishes extends FoodItem {
+        }
+
+
+        class FoodItemFactory {
+            make(foodItemName) {
+                return new FoodItem(foodItemName, price[foodItemName]);
+            }
+        }
+        const foodItemFactory = new FoodItemFactory();
+
 
         //subtotal area
         let currentItemDisplay = document.querySelector("#current_item");
         let subtotalDisplay = document.querySelector("#subtotal_display");
 
         // calculation
+        const foodItems = new Array();
         function onTap(elem) {
 
             const itemName = elem.id
@@ -399,13 +420,28 @@
 
             if (elem.checked) {
                 subtotalDisplay.innerText = Number(subtotalDisplay.innerText) + itemPrice;
-
                 currentItemDisplay.innerText = "Last added: " + itemName + ":" + itemPrice;
+
+                //test implementation for factory
+                const foodItem = foodItemFactory.make(itemName);
+                console.log(foodItem);
+                foodItems.push(foodItem);
+
+                //test implementation: calc sum
+                // foodItems.forEach( elem => console.log(elem.name + ":" + elem.price));
+                // const totalPrice = foodItems.reduce(sum + elem.price);
+                const totalPrice = foodItems.reduce((sum, elem) => {
+                    return sum + elem.price;
+                }, 0);
+
+                console.log("totalPrice: " + totalPrice.toFixed());
+                console.log(foodItems);
+
             } else {
                 subtotalDisplay.innerText = Number(subtotalDisplay.innerText) - itemPrice;
                 currentItemDisplay.innerText = "";
             }
-            console.log(subtotalDisplay.innerText);
+            //console.log(subtotalDisplay.innerText);
         }
     </script>
 
