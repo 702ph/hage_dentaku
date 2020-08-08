@@ -145,9 +145,8 @@
     </div>
     <br>
 
+    
 
-    <!-- TODO: gyaza objectととか作って、listに追加するようにする方がいいかなあ？-->
-    <!-- TODO: factory.get(Edamame)とか。-->
     <!-- TODO: 子クラスとか作れるんかなあ？SideDishesクラスの小クラスのedamameとか-->
 
     <script language="javascript" type="text/javascript">
@@ -177,12 +176,17 @@
         }
 
 
+        //reset. clear all selection and calculation result
         function reset() {
             let checkbox = document.querySelectorAll('input[type="checkbox"]');
             let input = document.querySelectorAll('input[type="number"]');
 
             checkbox.forEach(elem => elem.checked = false);
             input.forEach(elem => elem.value = "");
+
+            // clear food items
+            //attn: A = []; will set new empty array. but the original array will remain unchanged!
+            foodItems.length = 0;
 
             currentItemDisplay.innerText = "";
             subtotalDisplay.innerText = "0";
@@ -404,6 +408,9 @@
                 return new FoodItem(foodItemName, price[foodItemName]);
             }
         }
+
+
+        //create factory instance
         const foodItemFactory = new FoodItemFactory();
 
 
@@ -411,38 +418,48 @@
         let currentItemDisplay = document.querySelector("#current_item");
         let subtotalDisplay = document.querySelector("#subtotal_display");
 
+
         // calculation
-        const foodItems = new Array();
+        let foodItems = new Array();
         function onTap(elem) {
 
             const itemName = elem.id
             const itemPrice = price[itemName];
 
             if (elem.checked) {
-                subtotalDisplay.innerText = Number(subtotalDisplay.innerText) + itemPrice;
-                currentItemDisplay.innerText = "Last added: " + itemName + ":" + itemPrice;
-
-                //test implementation for factory
+                //create food item
                 const foodItem = foodItemFactory.make(itemName);
                 console.log(foodItem);
                 foodItems.push(foodItem);
 
-                //test implementation: calc sum
-                // foodItems.forEach( elem => console.log(elem.name + ":" + elem.price));
-                // const totalPrice = foodItems.reduce(sum + elem.price);
-                const totalPrice = foodItems.reduce((sum, elem) => {
-                    return sum + elem.price;
-                }, 0);
+                // show in display area
+                const totalPrice = calcSum(foodItems);
+                currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
+                subtotalDisplay.innerText = totalPrice.toFixed(2);
 
-                console.log("totalPrice: " + totalPrice.toFixed());
+                //debug
+                console.log("totalPrice: " + totalPrice.toFixed(2));
                 console.log(foodItems);
 
             } else {
-                subtotalDisplay.innerText = Number(subtotalDisplay.innerText) - itemPrice;
+                //delete item
+                foodItems = foodItems.filter(elem => elem.name !== itemName );
+
+                //calc sum
+                const totalPrice = calcSum(foodItems); //ここでも上と統一感なし。まあええわ。
+                subtotalDisplay.innerText = totalPrice.toFixed(2);
                 currentItemDisplay.innerText = "";
+
+                //debug
+                console.log("totalPrice: " + totalPrice.toFixed(2));
+                console.log(foodItems);
             }
-            //console.log(subtotalDisplay.innerText);
         }
+
+        function calcSum(foodItems) {
+            return foodItems.reduce((sum, elem) => sum + elem.price, 0);
+        }
+
     </script>
 
 </body>
