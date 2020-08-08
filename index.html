@@ -37,6 +37,10 @@
             transform: scale(2.5);
         }
 
+        #ordered_items_header {
+            text-align: center;
+        }
+
 
         /* この名前のクラスにdivに与えて、そのdivでinputを加工必要がある。
         https://blog.raizzenet.com/change-size-checkbox/ */
@@ -90,7 +94,11 @@
 
 
     <div　id="menu">
-        <br>
+
+        <h5>新バージョン:使用時注意！
+        理由：テスト漏れ無きにしもあらず。計算結果が合っているか注意しながら使用すること。
+    </h5>
+        
         <div id="side_dishes_area"></div>
 
         <hr>
@@ -143,9 +151,16 @@
     <div class="align_wrap">
         <button id="rest_button" onclick="reset()">CLEAR</button>
     </div>
+
+    <hr>
+
+    <h3 id="ordered_items_header">
+    [ordered items]
+    </h3>
+    
+    <ul type="disc" id="order_list_display_area"></ul>
     <br>
 
-    
 
     <!-- TODO: 子クラスとか作れるんかなあ？SideDishesクラスの小クラスのedamameとか-->
 
@@ -180,9 +195,12 @@
         function reset() {
             let checkbox = document.querySelectorAll('input[type="checkbox"]');
             let input = document.querySelectorAll('input[type="number"]');
+            const orderListDisplayArea = document.querySelector("#order_list_display_area");
+
 
             checkbox.forEach(elem => elem.checked = false);
             input.forEach(elem => elem.value = "");
+            orderListDisplayArea.innerHTML = null;
 
             // clear food items
             //attn: A = []; will set new empty array. but the original array will remain unchanged!
@@ -437,18 +455,24 @@
                 currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
                 subtotalDisplay.innerText = totalPrice.toFixed(2);
 
+                //renew display
+                renewOrderListDisplay(foodItems);
+
                 //debug
                 console.log("totalPrice: " + totalPrice.toFixed(2));
                 console.log(foodItems);
 
             } else {
                 //delete item
-                foodItems = foodItems.filter(elem => elem.name !== itemName );
+                foodItems = foodItems.filter(elem => elem.name !== itemName);
 
                 //calc sum
                 const totalPrice = calcSum(foodItems); //ここでも上と統一感なし。まあええわ。
                 subtotalDisplay.innerText = totalPrice.toFixed(2);
                 currentItemDisplay.innerText = "";
+
+                //renew display
+                renewOrderListDisplay(foodItems);
 
                 //debug
                 console.log("totalPrice: " + totalPrice.toFixed(2));
@@ -456,8 +480,25 @@
             }
         }
 
+
         function calcSum(foodItems) {
             return foodItems.reduce((sum, elem) => sum + elem.price, 0);
+        }
+
+
+        function renewOrderListDisplay(foodItems) {
+
+            const orderListDisplayArea = document.querySelector("#order_list_display_area");
+
+            //clear
+            orderListDisplayArea.innerHTML = null;
+
+            // list
+            foodItems.forEach(elem => {
+                const foodItem = document.createElement("li");
+                foodItem.innerText = elem.name + ": " + elem.price;
+                orderListDisplayArea.appendChild(foodItem);
+            });
         }
 
     </script>
