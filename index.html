@@ -47,6 +47,14 @@
                 text-align: center;
             }
 
+            .warning_area {
+                font-size: 25%;
+            }
+
+            #first_warning {
+                color: slateblue;
+            }
+
 
             /* この名前のクラスにdivに与えて、そのdivでinputを加工必要がある。
         https://blog.raizzenet.com/change-size-checkbox/ */
@@ -101,9 +109,13 @@
 
         <div　id="menu">
 
-            <h5>新バージョン:オーダーの一覧を最下部に表示！
+            <text class="warning_area" id="first_warning">
+                version2.1: 商品の複製に対応。ページ下部[ordered items]内の商品名をタップ。
+            </text>
+            <text class="warning_area">
                 警告：テスト漏れ無きにしもあらず。計算結果が合っているか注意しながら使用すること。
-            </h5>
+            </text>
+            <br>
 
             <div id="side_dishes_area"></div>
 
@@ -451,6 +463,7 @@
             // calculation
             let foodItems = new Array();
             function onTap(elem) {
+                console.log(elem);
 
                 const itemName = elem.id
                 const itemPrice = price[itemName];
@@ -461,16 +474,14 @@
                     console.log(foodItem);
                     foodItems.push(foodItem);
 
-                    // show in display area
-                    const totalPrice = calcSum(foodItems);
+                    // show in subtotal display area
                     currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
-                    subtotalDisplay.innerText = totalPrice.toFixed(2);
+                    redrawSubtotalDisplay(foodItems);
 
                     //renew display
-                    renewOrderListDisplay(foodItems);
+                    redrawOrderListDisplay(foodItems);
 
                     //debug
-                    console.log("totalPrice: " + totalPrice.toFixed(2));
                     console.log(foodItems);
 
                 } else {
@@ -482,8 +493,9 @@
                     subtotalDisplay.innerText = totalPrice.toFixed(2);
                     currentItemDisplay.innerText = "";
 
-                    //renew display
-                    renewOrderListDisplay(foodItems);
+                    //redraw display
+                    redrawOrderListDisplay(foodItems);
+
 
                     //debug
                     console.log("totalPrice: " + totalPrice.toFixed(2));
@@ -492,8 +504,27 @@
             }
 
 
-            function deplicateItem(itemName) {
+            function deplicateItem(item) {
+                // received item
+                const itemName = item.firstElementChild.firstElementChild.innerText;
 
+                //debug
+                console.log(itemName);
+
+                //create food item
+                const foodItem = foodItemFactory.make(itemName);
+                console.log(foodItem);
+                foodItems.push(foodItem);
+
+                // redraw in subtotal display area
+                currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
+                redrawSubtotalDisplay(foodItems);
+
+                //redraw display
+                redrawOrderListDisplay(foodItems);
+
+                //debug
+                console.log(foodItems);
             }
 
 
@@ -502,7 +533,16 @@
             }
 
 
-            function renewOrderListDisplay(foodItems) {
+            function redrawSubtotalDisplay(foodItems) {
+                const totalPrice = calcSum(foodItems);
+                subtotalDisplay.innerText = totalPrice.toFixed(2);
+
+                //debug
+                console.log("totalPrice: " + totalPrice.toFixed(2));
+            }
+
+
+            function redrawOrderListDisplay(foodItems) {
 
                 const orderListDisplayArea = document.querySelector("#order_list_display_area");
 
@@ -511,16 +551,18 @@
 
                 // show list
                 foodItems.forEach(elem => {
-                    const foodItem = document.createElement("li");
-                    const divInFoodItem = document.createElement("div");
                     const foodItemName = document.createElement("text");
-                    const foodItemPrice =  document.createElement("text");
- 
                     foodItemName.innerText = elem.name;
+
+                    const foodItemPrice = document.createElement("text");
                     foodItemPrice.innerText = ": " + elem.price;
-                    
+
+                    const divInFoodItem = document.createElement("div");
                     divInFoodItem.appendChild(foodItemName);
                     divInFoodItem.appendChild(foodItemPrice);
+
+                    const foodItem = document.createElement("li");
+                    foodItem.setAttribute("onclick", "deplicateItem(this)");
                     foodItem.appendChild(divInFoodItem);
 
                     orderListDisplayArea.appendChild(foodItem);
