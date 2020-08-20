@@ -492,6 +492,11 @@
             }
 
 
+            function deplicateItem(itemName) {
+
+            }
+
+
             function calcSum(foodItems) {
                 return foodItems.reduce((sum, elem) => sum + elem.price, 0);
             }
@@ -504,10 +509,20 @@
                 //clear
                 orderListDisplayArea.innerHTML = null;
 
-                // list
+                // show list
                 foodItems.forEach(elem => {
                     const foodItem = document.createElement("li");
-                    foodItem.innerText = elem.name + ": " + elem.price;
+                    const divInFoodItem = document.createElement("div");
+                    const foodItemName = document.createElement("text");
+                    const foodItemPrice =  document.createElement("text");
+ 
+                    foodItemName.innerText = elem.name;
+                    foodItemPrice.innerText = ": " + elem.price;
+                    
+                    divInFoodItem.appendChild(foodItemName);
+                    divInFoodItem.appendChild(foodItemPrice);
+                    foodItem.appendChild(divInFoodItem);
+
                     orderListDisplayArea.appendChild(foodItem);
                 });
             }
