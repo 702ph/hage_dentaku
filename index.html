@@ -110,7 +110,7 @@
         <div　id="menu">
 
             <text class="warning_area" id="first_warning">
-                version2.2: 商品の複製に対応。ページ下部[ordered items]内の商品名をタップ。
+                version2.3: メニュー追加。商品の複製に対応。ページ下部[ordered items]内の商品名をタップ。
             </text>
             <text class="warning_area">
                 免責：作者は動作不良時の責任を負いません。
@@ -281,6 +281,7 @@
                 "Beyond Meat": 2.0,
                 "Eryngii": 1.5,
                 "Big Portion": 3.0
+                "Dead Spicy": 
             };
 
             const dessertPriceList = {
@@ -403,7 +404,7 @@
 
             // add item for finger food
             let sideDishesArea = document.querySelector("#side_dishes_area");
-            addFoodItem(sideDishesArea, sideDishesPriceList, [0, 1, 3, 4, 5, 6]);
+            addFoodItem(sideDishesArea, sideDishesPriceList, [0, 1, 2, 3, 4, 5, 6]);
 
             // add item for finger food
             let ramenArea = document.querySelector("#ramen_area");
@@ -411,7 +412,9 @@
 
             // add item for extra toppings
             let extraToppingArea = document.querySelector("#extra_topping_area");
-            addFoodItem(extraToppingArea, extraToppingPriceList, [1, 3, 5, 7]);
+            // addFoodItem(extraToppingArea, extraToppingPriceList, [1, 3, 5, 7]);
+            addFoodItem(extraToppingArea, extraToppingPriceList, [1, 2, 3, 4, 5, 6, 7]);
+
 
             let lunchMenuArea = document.querySelector("#lunch_menu_area");
             addFoodItem(lunchMenuArea, lunchMenuPriceList, [0, 1, 2, 3, 4, 5]);
@@ -422,11 +425,13 @@
 
             // add item for warm drinks
             let warmDrinksArea = document.querySelector("#warm_drinks_area");
-            addFoodItem(warmDrinksArea, warmDrinksPriceList, [1, 3]);
+            //addFoodItem(warmDrinksArea, warmDrinksPriceList, [1, 3]);
+            addFoodItem(warmDrinksArea, warmDrinksPriceList, [1, 2, 3]);
 
             // add item for cold drinks
             let coldDrinksArea = document.querySelector("#cold_drinks_area");
-            addFoodItem(coldDrinksArea, coldDrinksPriceList, [1, 3, 5, 6, 7, 9]);
+            // addFoodItem(coldDrinksArea, coldDrinksPriceList, [1, 3, 5, 6, 7, 9]);
+            addFoodItem(coldDrinksArea, coldDrinksPriceList, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 
             let summerSpecialLunchMenuArea = document.querySelector("#summer_special_lunch_menu_area");
