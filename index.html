@@ -516,7 +516,7 @@
             }
 
 
-            function deplicateItem(item) {
+            function duplicateItem(item) {
                 // received item
                 const itemName = item.firstElementChild.firstElementChild.innerText;
 
@@ -574,7 +574,8 @@
                     divInFoodItem.appendChild(foodItemPrice);
 
                     const foodItem = document.createElement("li");
-                    foodItem.setAttribute("onclick", "deplicateItem(this)");
+                    foodItem.setAttribute("onclick", "du
+    plicateItem(this)");
                     foodItem.appendChild(divInFoodItem);
 
                     orderListDisplayArea.appendChild(foodItem);
