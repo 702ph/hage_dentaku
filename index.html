@@ -269,29 +269,34 @@
             const price = {}
 
             const sideDishesPriceList = {
-                "Chicken Gyoza": 4.5,
-                "Vegan Gyoza": 5.0,
-                "Kimchi": 3.7,
+                "Japanische Omelette 卵焼き": 4.80,
+                "Karaage 唐揚げ": 5.01,
+                "Vegan Karaage V唐揚げ": 5.61,
+                
+                "Chicken Gyoza 餃子": 4.59,
+                "Vegan Gyoza V餃子": 5.10,
+                "Edamame": 3.99,
+                "Ebi Fryエビフライ単品":5.86,
+                "Yakitori単品": 4.67,
+
+                "Chicken Katsu カツ単品": 5.35,
+                "Japanische Croquetteコロッケ単品": 4.59,
+
+                "Wakame Salad": 3.57,
+                "Kimchi": 3.82,
+
+                "Hijiki Salad": 4.16,
+                "Kinpira Salad": 4.16,
+
                 "Fried Eryngii": 3.9,
-                "Chicken Karaage": 4.9,
-                "Vegan Karaage ": 5.5,
-                "Edamame": 3.9,
-                "Wakame Salad": 3.5,
-                "Hijiki Salad": 3.9,
-                "Kinpira Salad": 3.9,
-                "Hage Salad": 8.50,
-                "Chicken Katsu(単品)": 4.90,
-                "Tamago Yaki": 4.80,
-                "Yakitori": 4.50,
-                "Miso Soup": 2.00,
             }
 
             const ramenPriceList = {
-                "Shoyu Ramen": 10.5,
-                "Torikotsu Ramen": 11.5,
-                "Miso Ramen": 10.5,
-                "TanTan Ramen": 11.5,
-                "Crispy Ente Ramen": 14.50,
+                "Shoyu Ramen": 10.71,
+                "Torikotsu Ramen": 11.73,
+                "Miso Ramen": 10.71,
+                "TanTan Ramen": 11.73,
+                "Crispy Ente Ramen": 15.21,
             }
 
             const extraToppingPriceList = {
@@ -317,33 +322,36 @@
             };
 
             const warmDrinksPriceList = {
-                "Yuzu": 2.8,
-                "Plum": 2.8,
                 "Ginger": 2.8,
+                "Plum": 2.8,
+                "Yuzu": 2.8,
                 "Genmaicha": 2.8,
                 "Houjicha": 2.8,
             };
 
             //飲み物はSimplyDeliveryを参照とのこと2021/06/04
             const coldDrinksPriceList = {
-                "Erdinger": 3.5,
+                "Water": 2.8,
                 "Cola": 2.8,
                 "Sprite": 2.8,
-                "Ramune": 3.3,
-                "Green Tea": 3.5,
-                "Aloe": 3.3,
-                "Soda(Peach Mango Melon )": 3.3,
-                "Mugicha": 3.5,
-                "Calpico": 3.0,
-                "Water": 2.8,
-                "Bubble Tea": 3.30,
                 "Apfelschorle": 2.80,
-                "Tapioka": 3.30
+                "Calpico": 3.0,
+                "Ramune": 3.3,
+                "Aloe": 3.3,
+                "Green Tea": 3.5,
+
+                // "Soda(Peach Mango Melon )": 3.3,
+                // "Mugicha": 3.5,
+ 
+                "Erdinger": 3.5,
+                "Bubble Tea": 3.31,
             };
 
             const lunchMenuPriceList = {
                 "Chicken Katsu Don(丼)": 10.50,
-                "Yakitori Don(丼)": 10.5,
+                "Yakitori Don ": 10.50,
+                "Sake Don 鮭丼": 10.71,
+                "Sake Avo Don 鮭アボ丼": 10.71,
                 "Sake Teriyaki 弁当": 11.13,
                 "Chicken Katsu 弁当": 8.80,
                 "Croquette 弁当": 7.70,
@@ -351,14 +359,24 @@
                 "Saba Shioben 弁当": 11.73,
                 "Chicken Teriyaki 弁当": 8.80,
                 "Tofu Teriyaki 弁当": 7.70,
-                "Yakitori Don": 10.50,
-                "Katsu Curry": 10.50,
-                "Ebi Fry カレー": 11.05,
-                "Croquette カレー": 11.05,
-
+                "Katsu Curry カツカレー": 10.50,
+                "Ebi Fry エビカレー": 11.05,
+                "Croquette コロッケカレー": 11.05,
                 "Udon Noodle ダルマうどん": 9.90,
                 // "Yuzu Shio Ramen": 9.50,　//2021/06/04 無いとのこと
-            };
+                "Maguro Sushi Set": 15.21,
+                "Sake Sushi Set": 12.15,
+                "Vegan Sushi Set": 8.92,
+                "Vegetarian Sushi Set": 8.92,
+                "Inside Out California カリフォルニア裏巻": 7.05,
+                "Inside Out Sake 鮭裏巻": 7.05,
+                "Maguro Maki 鉄火巻": 3.99,
+                "Sake Maki 鮭細巻": 3.57,
+                "Tamago Maki 玉子細巻": 3.31,
+                "Kappa Maki カッパ巻": 3.31,
+                "Oshinko Maki おしんこ巻": 3.31,
+                "Avocado Maki アボ細巻": 3.31,
+             };
 
             const summerSpecialLunchMenuPriceList = {
                 // "Yuzu Shio Ramen": 9.50,
@@ -390,6 +408,7 @@
                 "Sushi Rice 酢飯単品 ": 2.55,
                 "Miso Soup 味噌汁": 2.04,
                 "Japanische Croquetteコロッケ単品": 4.59
+
             };
 
 
