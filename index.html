@@ -135,13 +135,14 @@
             <div id="extra_topping_area"></div>
 
             <hr>
-            【弁当＆丼→分離しろ】
+            【弁当＆丼&カレー→分離しろ】
             <div id="lunch_menu_area"></div>
 
-            <hr>
-            <div id="summer_special_lunch_menu_area"></div>
+            <!-- <hr>
+            <div id="summer_special_lunch_menu_area"></div> -->
 
             <hr>
+            【デザート】
             <div id="dessert_area"></div>
 
             <hr>
@@ -287,6 +288,7 @@
                 "Torikotsu Ramen": 11.5,
                 "Miso Ramen": 10.5,
                 "TanTan Ramen": 11.5,
+                "Crispy Ente Ramen": 14.50,
             }
 
             const extraToppingPriceList = {
@@ -306,7 +308,9 @@
                 "Mochi": 3.5,
                 "Stick Ice": 2.5,
                 "Dorayaki": 3.50,
-                "Dorayaki mit Eis": 4.50
+                "Dorayaki mit Eis": 4.50,
+
+                "Matcha Cheese Cake" : 3.50,
             };
 
             const warmDrinksPriceList = {
@@ -317,6 +321,7 @@
                 "Houjicha": 2.8,
             };
 
+            //飲み物はSimplyDeliveryを参照とのこと2021/06/04
             const coldDrinksPriceList = {
                 "Erdinger": 3.5,
                 "Cola": 2.8,
@@ -334,18 +339,22 @@
             };
 
             const lunchMenuPriceList = {
-                "Tofu Teriyaki": 7.70,
-                "Croquette": 7.70,
-                "Chicken Katsu(定食)": 8.80,
-                "Chicken Teriyaki": 8.80,
                 "Chicken Katsu Don(丼)": 10.50,
-                "Udon Noodle": 9.90,
-                "Ebi Fry": 9.90,
-                "Yuzu Shio Ramen": 9.50,
-                "Yakitori Don with Miso Suppe": 10.5,
-                "Katsu Curry": 10.50,
+                "Yakitori Don(丼)": 10.5,
+                "Sake Teriyaki 弁当": 11.13,
+                "Chicken Katsu 弁当": 8.80,
+                "Croquette 弁当": 7.70,
+                "Ebi Fry 弁当": 9.90,
+                "Saba Shioben 弁当": 11.73,
+                "Chicken Teriyaki 弁当": 8.80,
+                "Tofu Teriyaki 弁当": 7.70,
                 "Yakitori Don": 10.50,
-                "Crispy Ente Ramen": 14.50,
+                "Katsu Curry": 10.50,
+                "Ebi Fry カレー": 11.05,
+                "Croquette カレー": 11.05,
+
+                "ダルマ Udon Noodle": 9.90,
+                // "Yuzu Shio Ramen": 9.50,　//2021/06/04 無いとのこと
 
             };
 
@@ -358,21 +367,21 @@
             };
 
             const otherItemPriceList = {
-                "ポッキー": 2.5,
-                "Toast Sibuya": 11.50,
-                "Würysauce 500ml": 5.90,
-                "Natto": 3.40,
-                "Grüner Tee Bonbon": 3.80,
-                "Würzpulver, Curry, mittelscharf 140g": 4.90,
-                "Yakitori Sauce": 4.90,
-                "Harvest Macha Milk": 3.89,
-                "Sojasauce dunkel 1L": 5.91,
-                "MENTAIKO FURIKAKE": 2.90,
-                "TAMAGO FURIKAKE": 3.20,
-                "Würzpulver, Curry, scharf 140g": 4.90,
-                "KATSUO FURIKAKE": 2.90,
-                "Sushi Nori": 11.49,
-                "Matcha Cheese Cake" : 3.50,
+                // "ポッキー": 2.5,
+                // "Toast Sibuya": 11.50,
+                // "Würysauce 500ml": 5.90,
+                // "Natto": 3.40,
+                // "Grüner Tee Bonbon": 3.80,
+                // "Würzpulver, Curry, mittelscharf 140g": 4.90,
+                // "Yakitori Sauce": 4.90,
+                // "Harvest Macha Milk": 3.89,
+                // "Sojasauce dunkel 1L": 5.91,
+                // "MENTAIKO FURIKAKE": 2.90,
+                // "TAMAGO FURIKAKE": 3.20,
+                // "Würzpulver, Curry, scharf 140g": 4.90,
+                // "KATSUO FURIKAKE": 2.90,
+                // "Sushi Nori": 11.49,
+
             };
 
 
@@ -423,7 +432,7 @@
             //TODO: これ以降も自動化したい
             // add item for finger food
             let sideDishesArea = document.querySelector("#side_dishes_area");
-            addFoodItem(sideDishesArea, sideDishesPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+            addFoodItem(sideDishesArea, sideDishesPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
 
             // add item for finger food
             let ramenArea = document.querySelector("#ramen_area");
@@ -434,7 +443,7 @@
             addFoodItem(extraToppingArea, extraToppingPriceList, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
             let lunchMenuArea = document.querySelector("#lunch_menu_area");
-            addFoodItem(lunchMenuArea, lunchMenuPriceList, [0, 1, 2, 3, 4, 5, 6,7]);
+            addFoodItem(lunchMenuArea, lunchMenuPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
 
             // add item for desert
             let dessertArea = document.querySelector("#dessert_area");
