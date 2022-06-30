@@ -107,7 +107,7 @@
         </style>
 
 
-<!-- カテゴリ名をかく。他の部分より大きめに。
+        <!-- カテゴリ名をかく。他の部分より大きめに。
 ビーガンを緑に。 -->
 
 
@@ -121,8 +121,14 @@
             </text>
             <br>
 
+            <hr>
+            【Vorspeisen】
+            <div id="vorspeisen_area">
+            </div>
+
+            <hr>
             【サイドディッシュ】
-            <div id="side_dishes_area">                
+            <div id="side_dishes_area">
             </div>
 
             <hr>
@@ -264,66 +270,60 @@
                 }
             }
 
-            
+
             //商品メニュー
             const price = {}
 
+            const vorspeisenPriceList = {
+                "Pak Choi Salat": 3.9,
+                "Kimich": 3.9,
+                "Wakame Salat": 3.9,
+                "Eryngii ": 3.9,
+                "Edamame": 4.3,
+                "Kinpira Salat": 4.3,
+                "Hijiki Salat": 4.3,
+
+            }
+
             const sideDishesPriceList = {
-                "Karaage 唐揚げ": 5.10,
-                "Vegan Karaage V唐揚げ": 5.70,
-                
-                "Chicken Gyoza 餃子": 4.60,
-                "Vegan Gyoza V餃子": 5.10,
-                "Edamame": 3.90,
-                "Ebi Fryエビフライ単品":5.90,
-                "Yakitori単品": 4.70,
-
-                "Chicken Katsu カツ単品": 5.40,
-                "Japanische Croquetteコロッケ単品": 4.60,
-
-                "Wakame Salad": 3.60,
-                "Kimchi": 3.90,
-
-                "Hijiki Salad": 4.20,
-                "Kinpira Salad": 4.20,
-                "Japanische Omelette 卵焼き": 5.20,
-
-                "Eryngii Salad": 3.90,
-                "Chicken Teriyaki鶏テリ":4.70,
-                "Crispy Ente": 5.80,
-                "Saba Shio さば塩": 6.80,
-                "Sake Teriyaki": 6.80,
-                "Hage Salad": 3.60,
+                "Tamago Yaki": 5.3,
+                "Croquette": 4.9,
+                "Chicken Katsu": 5.9,
+                "Ebifry": 6.9,
+                "Yakitori": 4.5,
+                "Chicken Teriyaki": 4.9,
+                "Karaage 唐揚げ": 5.3,
+                "Vegan Karaage V唐揚げ": 5.9,
+                "Goyza 餃子": 4.9,
+                "Vegan Gyoza V餃子": 5.3,
             }
 
             const ramenPriceList = {
-                "Shoyu Ramen": 10.80,
-                "Torikotsu Ramen": 11.80,
-                "Miso Ramen": 10.80,
-                "TanTan Ramen": 11.80,
-                "Crispy Ente Ramen": 15.30,
+                "Shoyu Ramen": 11.90,
+                "Torikotsu Ramen": 13.30,
+                "Miso Ramen": 12.90,
+                "TanTan Ramen": 13.90,
+                "Crispy Ente Ramen": 15.90,
                 "Cold Ramen Salat冷やし中華": 10.80,
-                "Gerösteter Sesam Ramenごまラーメン": 11.80,
-                "Cold Tantan Salad":10.80,
-                "Cold Yuzu Shio 冷やし柚子": 10.80,
-                "Cold Shoyu Ramen 冷やし醤油": 10.20,
-                "Tempura Ramen": 13.80
+                "Gerösteter Sesam Ramenごまラーメン": 13.90,
+                "Cold Tantan Salad": 10.80,
+                "Tempura Ramen": 13.90
             }
 
             const extraToppingPriceList = {
                 "Eryngii Topping": 1.60,
-                "Egg": 1.10,
+                "Egg": 1.30,
 
-                "Chashu": 2.10,
-                "Topping Tantan Meat": 2.10,
-                "Beyond Meat": 2.10,
+                "Chashu": 2.30,
+                "Topping Tantan Meat": 2.30,
+                "Beyond Meat": 2.30,
 
                 "Garlic": 1.10,
-                "Dead Spicy": 0.60,
+                "Dead Spicy": 0.80,
 
-                "Big Portion": 3.20,
+                "Big Portion": 3.30,
 
-                "Naruto": 1.10,
+                "Naruto": 1.30,
                 "Naruto(V)": 1.60,
 
                 "Ente": 5.9,
@@ -332,56 +332,62 @@
             };
 
             const dessertPriceList = {
-                "Matcha Cheese Cake" : 3.60,
-                "Yuzu Cheese Cake" : 3.60,
+                "Matcha Cheese Cake": 4.60,
+                "Yuzu Cheese Cake": 4.60,
 
                 "Mochi": 3.60,
                 "Dorayaki": 3.60,
 
-                "JAPANESE FRUIT ICE":1.90,
-                "ICE(Match, Yuzu)":2.90,
+                // "JAPANESE FRUIT ICE": 1.90,
+                // "ICE(Match, Yuzu)": 2.90,
 
-                "Matcha Sponge Cake":4.60,
+                "Mochi Ice 餅アイス": 2.80,
+                "Matcha Sponge Cake": 5.30,
             };
 
             const warmDrinksPriceList = {
-                "Ginger Tea": 2.80,
-                "Plum Tea": 2.80,
-                "Yuzu Tea": 2.80,
-                "Genmaicha Tea": 2.80,
-                "Houjicha Tea": 2.80,
+                "Süßer Tee": 2.90,
+                "Japanischer Tee": 2.90,
+
+                // "Ginger Tea": 2.80,
+                // "Plum Tea": 2.80,
+                // "Yuzu Tea": 2.80,
+                // "Genmaicha Tea": 2.80,
+                // "Houjicha Tea": 2.80,
             };
 
             const coldDrinksPriceList = {
-                "Water": 2.80,
-                "Cola, Sprite, Apfel-Sch": 3,
-                // "Cola": 3,
-                // "Sprite": 3,
-                // "Apfelschorle": 3,
-                "Calpico": 3.30,
-                "Ramune": 3.30,
+                // "Water": 2.80,
+                // "Cola, Sprite, Apfel-Sch": 3,
+                // "Calpico": 3.30,
+                // "Ramune": 3.30,
+                // "Green Tea": 3.30,
+                // "Erdinger": 3.50,
+                // "Bubble Tea": 3.30,
+                "Soda": 3.50,
                 "Aloe": 3.30,
-                "Green Tea": 3.30, 
-                "Erdinger": 3.50,
-                "Bubble Tea": 3.30,
-                "Soda": 3.30,
+                "Soft drinks": 3.30,
+                "Japanischer Getränk": 3.50,
+                "Bier": 3.50,
+                "Wasser": 2.90,
             };
 
             const lunchMenuPriceList = {
-                "Chicken Katsu Don(丼)": 10.80,
-                "Yakitori Don ": 10.80,
-                "Daily Special Mix Bento": 11.47,
-                "Curryカレー(カツ・エビ・コロッケ)": 11.10,  
-                "Omurice „Hage Style“": 9.90,              
-             };
+                "Chicken Katsu Don(丼)": 10.90,
+                "Tamago Don(丼)": 10.90,
+                "Yakitori Don ": 10.90,
+                "Curryカレー(カツ・エビ・コロッケ)": 11.90,
+                // "Daily Special Mix Bento": 11.47,
+                // "Omurice „Hage Style“": 9.90,
+            };
 
             const summerSpecialLunchMenuPriceList = {
             };
 
             const otherItemPriceList = {
-                "Rice 単品": 2.20,
-                "Miso Soup 味噌汁": 2.10,
-                "Bento Set":4.10,
+                // "Rice 単品": 2.20,
+                // "Miso Soup 味噌汁": 2.10,
+                // "Bento Set": 4.10,
 
                 // メイドカフェ用メニュー。一時的に使用しないのでコメントアウト。
                 // "Maid Fruit Sandwich メイドカフェ サンド":5.52,
@@ -401,15 +407,14 @@
             Object.assign(price, lunchMenuPriceList);
             Object.assign(price, summerSpecialLunchMenuPriceList);
             Object.assign(price, otherItemPriceList);
+            Object.assign(price, vorspeisenPriceList);
 
 
             // add food item with line break
             // (display area, pricelist, position for line break)
             function addFoodItem(area, priceList, lineBreak) {
-
                 let index = 0;
                 for (let [key, value] of Object.entries(priceList)) {
-
                     //TODO:外に出す =>外に出すと挙動が変わるようだ。毎回新しい要素として作成する必要があるようだ。
                     //使い回すと、最後の要素が新規の要素に上書きされてしまうようだ。
                     let food = document.createElement("Input");
@@ -435,6 +440,10 @@
 
 
             //TODO: これ以降も自動化したい
+            // add item for vorspeisen
+            let vorspeisenArea = document.querySelector("#vorspeisen_area");
+            addFoodItem(vorspeisenArea, vorspeisenPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+
             // add item for finger food
             let sideDishesArea = document.querySelector("#side_dishes_area");
             addFoodItem(sideDishesArea, sideDishesPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
@@ -448,8 +457,8 @@
             addFoodItem(extraToppingArea, extraToppingPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 
             let lunchMenuArea = document.querySelector("#lunch_menu_area");
-            addFoodItem(lunchMenuArea, lunchMenuPriceList, 
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,]);
+            addFoodItem(lunchMenuArea, lunchMenuPriceList,
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,]);
 
             // add item for desert
             let dessertArea = document.querySelector("#dessert_area");
@@ -464,7 +473,7 @@
             addFoodItem(coldDrinksArea, coldDrinksPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
             let summerSpecialLunchMenuArea = document.querySelector("#summer_special_lunch_menu_area");
-            addFoodItem(summerSpecialLunchMenuArea, summerSpecialLunchMenuPriceList, [0, 1, 2 ,3]);
+            addFoodItem(summerSpecialLunchMenuArea, summerSpecialLunchMenuPriceList, [0, 1, 2, 3]);
 
             let otherItemArea = document.querySelector("#other_item_area");
             addFoodItem(otherItemArea, otherItemPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,]);
