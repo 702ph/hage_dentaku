@@ -127,28 +127,20 @@
             </div>
 
             <hr>
-            【Side Dishes/サイド】
+            【サイドディッシュ】
             <div id="side_dishes_area">
             </div>
 
             <hr>
-            【Warm Drinks/温かい飲み物】
-            <div id="warm_drinks_area"></div>
-
-            <hr>
-            【Cold Drinks/冷たい飲み物】
-            <div id="cold_drinks_area"></div>
-
-            <hr>
-            【Ramen/ラーメン】
+            【ラーメン】
             <div id="ramen_area"></div>
 
             <hr>
-            【Toppings/トッピング】
+            【トッピング】
             <div id="extra_topping_area"></div>
 
             <hr>
-            【Bento, Curry、弁当、丼、カレー、寿司】
+            【弁当、丼、カレー、寿司】
             <div id="lunch_menu_area"></div>
 
             <!-- <hr>
@@ -156,11 +148,19 @@
             -->
 
             <hr>
-            【Dessert/デザート】
+            【デザート】
             <div id="dessert_area"></div>
 
             <hr>
-            【Others/その他】
+            【温かい飲み物】
+            <div id="warm_drinks_area"></div>
+
+            <hr>
+            【冷たい飲み物】
+            <div id="cold_drinks_area"></div>
+
+            <hr>
+            【その他＆メイドカフェ】
             <div id="other_item_area"></div>
 
         </div>
@@ -293,18 +293,20 @@
                 "Chicken Teriyaki": 4.9,
                 "Karaage 唐揚げ": 5.3,
                 "Vegan Karaage V唐揚げ": 5.9,
-                "Gyoza 餃子": 4.9,
+                "Goyza 餃子": 4.9,
                 "Vegan Gyoza V餃子": 5.3,
             }
 
             const ramenPriceList = {
-                "Shoyu": 12.90,
-                "Torikotsu": 13.90,
-                "Miso": 12.90,
-                "TanTan": 13.90,
-                "Duck(Ente)": 15.90,
-                "Sesam": 13.90,
-                "Tempura": 14.90,
+                "Shoyu Ramen": 12.90,
+                "Torikotsu Ramen": 13.90,
+                "Miso Ramen": 12.90,
+                "TanTan Ramen": 13.90,
+                "Crispy Ente Ramen": 15.90,
+                "Cold Ramen Salat冷やし中華": 10.80,
+                "Gerösteter Sesam Ramenごまラーメン": 13.90,
+                "Cold Tantan Salad": 10.80,
+                "Tempura Ramen": 13.90
             }
 
             const extraToppingPriceList = {
@@ -329,23 +331,22 @@
             };
 
             const dessertPriceList = {
-                // "Matcha Cheese Cake": 4.60,
-                // "Yuzu Cheese Cake": 4.60,
-                "Cake": 4.60,
-                "Mochi": 2.50,
+                "Matcha Cheese Cake": 4.60,
+                "Yuzu Cheese Cake": 4.60,
+
+                "Mochi": 3.60,
                 "Dorayaki": 3.60,
+
                 // "JAPANESE FRUIT ICE": 1.90,
                 // "ICE(Match, Yuzu)": 2.90,
+
                 "Mochi Ice 餅アイス": 2.80,
                 "Matcha Sponge Cake": 5.30,
             };
 
-
             const warmDrinksPriceList = {
-                "Tee": 2.90,
-
-                // "Süßer Tee": 2.90,
-                // "Japanischer Tee": 2.90,
+                "Süßer Tee": 2.90,
+                "Japanischer Tee": 2.90,
 
                 // "Ginger Tea": 2.80,
                 // "Plum Tea": 2.80,
@@ -362,22 +363,20 @@
                 // "Green Tea": 3.30,
                 // "Erdinger": 3.50,
                 // "Bubble Tea": 3.30,
-                // "Aloe": 3.30,
-                "Aloe, Soft drinks(Cola系)": 3.30,
-                // "Japanischer Getränk": 3.50,
-                // "Bier": 3.50,
+                "Soda": 3.50,
+                "Aloe": 3.30,
+                "Soft drinks": 3.30,
+                "Japanischer Getränk": 3.50,
+                "Bier": 3.50,
                 "Wasser": 2.90,
-                "Ice Tea, Bubble Tea , Soda, Bier, Japanische Getränke ": 3.50,
-                // "Iced Tea": 3.50,
+                "Iced Tea": 3.50,
             };
 
             const lunchMenuPriceList = {
-                // "Chicken Katsu Don(丼)": 10.90,
-                // "Tamago Don(丼)": 10.90,
-                // "Yakitori Don ": 10.90,
-                "Don(丼) ": 10.90,
+                "Chicken Katsu Don(丼)": 10.90,
+                "Tamago Don(丼)": 10.90,
+                "Yakitori Don ": 10.90,
                 "Curryカレー(カツ・エビ・コロッケ)": 11.90,
-                "Rice 単品": 2.20,
                 // "Daily Special Mix Bento": 11.47,
                 // "Omurice „Hage Style“": 9.90,
             };
@@ -386,9 +385,9 @@
             };
 
             const otherItemPriceList = {
-                // "Rice 単品": 2.20,
-                // "Miso Soup 味噌汁": 2.10,
-                // "Bento Set": 4.10,
+                "Rice 単品": 2.20,
+                "Miso Soup 味噌汁": 2.10,
+                "Bento Set": 4.10,
 
                 // メイドカフェ用メニュー。一時的に使用しないのでコメントアウト。
                 // "Maid Fruit Sandwich メイドカフェ サンド":5.52,
@@ -545,6 +544,7 @@
 
                     //redraw display
                     redrawOrderListDisplay(foodItems);
+
 
                     //debug
                     console.log("totalPrice: " + totalPrice.toFixed(2));
