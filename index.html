@@ -144,8 +144,12 @@
             <div id="ramen_area"></div>
 
             <hr>
-            【EXTRA/トッピング】
-            <div id="extra_topping_area"></div>
+            【EXTRA】
+            <div id="extra_area"></div>
+
+            <hr>
+            【TOPPING/トッピング】
+            <div id="topping_area"></div>
 
             <hr>
             【RICE DISH】
@@ -193,8 +197,12 @@
         <hr>
 
         <h3 id="ordered_items_header">
-            [ordered items]
+            オーダー数/ORDRED: <text id="num_items_display">0</text>
         </h3>
+        <div style="color: red; font-weight:bold">
+            オーダーカードと数の突き合わせをすること！
+            MATCH THE NUMBER ON THE ORDER CARD!
+        </div>
 
         <ul type="disc" id="order_list_display_area"></ul>
         <br>
@@ -304,11 +312,12 @@
                 "Miso, Shoyu": 12.90,
             }
 
-            const extraToppingPriceList = {
+            const extraPriceList = {
                 "Big Portion": 3.30,
                 "Extra Spicy": 0.80,
-                "----------": 0.00,
+            };
 
+            const extraToppingPriceList = {
                 "Egg": 1.30,
                 "Chashu": 2.30,
                 "Naruto": 1.30,
@@ -359,6 +368,7 @@
             //TODO: なんかこれ列挙してるのきれいではないわ。。。。
             Object.assign(price, sideDishesPriceList);
             Object.assign(price, ramenPriceList);
+            Object.assign(price, extraPriceList);
             Object.assign(price, extraToppingPriceList);
             Object.assign(price, dessertPriceList);
             Object.assign(price, warmDrinksPriceList);
@@ -411,9 +421,13 @@
             let ramenArea = document.querySelector("#ramen_area");
             addFoodItem(ramenArea, ramenPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
-            // add item for extra toppings
-            let extraToppingArea = document.querySelector("#extra_topping_area");
-            addFoodItem(extraToppingArea, extraToppingPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+            // add item for toppings
+            let extraArea = document.querySelector("#extra_area");
+            addFoodItem(extraArea, extraPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+
+            // add item for toppings
+            let toppingArea = document.querySelector("#topping_area");
+            addFoodItem(toppingArea, extraToppingPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 
             let lunchMenuArea = document.querySelector("#lunch_menu_area");
             addFoodItem(lunchMenuArea, lunchMenuPriceList,
@@ -466,10 +480,12 @@
             //subtotal area
             let currentItemDisplay = document.querySelector("#current_item");
             let subtotalDisplay = document.querySelector("#subtotal_display");
+            const numItemsDisplay = document.querySelector("#num_items_display");
 
 
             // calculation
             let foodItems = new Array();
+
             function onTap(elem) {
                 console.log(elem);
 
@@ -485,6 +501,7 @@
                     // show in subtotal display area
                     currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
                     redrawSubtotalDisplay(foodItems);
+                    reRenderNumItmDisplay(foodItems);
 
                     //renew display
                     redrawOrderListDisplay(foodItems);
@@ -500,6 +517,9 @@
                     const totalPrice = calcSum(foodItems); //ここでも上と統一感なし。まあええわ。
                     subtotalDisplay.innerText = totalPrice.toFixed(2);
                     currentItemDisplay.innerText = "";
+
+                    //number of items 
+                    reRenderNumItmDisplay(foodItems);
 
                     //redraw display
                     redrawOrderListDisplay(foodItems);
@@ -526,6 +546,7 @@
                 // redraw in subtotal display area
                 currentItemDisplay.innerText = "Last added: " + foodItem.name + ":" + foodItem.price;
                 redrawSubtotalDisplay(foodItems);
+                reRenderNumItmDisplay(foodItems);
 
                 //redraw display
                 redrawOrderListDisplay(foodItems);
@@ -548,13 +569,22 @@
                 console.log("totalPrice: " + totalPrice.toFixed(2));
             }
 
+            function reRenderNumItmDisplay(foodItems) {
+                // const totalPrice = calcSum(foodItems);
+                // numItemsDisplay.innerHTML = null;
+                console.log("foodItems.length:", foodItems.length)
+                numItemsDisplay.innerText = foodItems.length;
+            }
+
 
             function redrawOrderListDisplay(foodItems) {
 
                 const orderListDisplayArea = document.querySelector("#order_list_display_area");
+                // const numItemsDisplay = document.querySelector("#num_items_display");
 
                 //clear
                 orderListDisplayArea.innerHTML = null;
+                // numItemsDisplay.innerHTML = null;
 
                 // show list
                 foodItems.forEach(elem => {
@@ -575,6 +605,9 @@
                     orderListDisplayArea.appendChild(foodItem);
                 });
             }
+
+            //show number of items
+
 
         </script>
 
