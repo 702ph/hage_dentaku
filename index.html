@@ -153,10 +153,10 @@
 
             <hr>
             【RICE DISH】
-            <div id="summer_special_lunch_menu_area"></div> 
+            <div id="rice_dish_area"></div> 
 
             <hr>
-            【ランチ】
+            【LUNCH/ランチ】
             <div id="lunch_menu_area"></div>
 
            
@@ -353,15 +353,14 @@
                 "Ice Tea, Bubble Tea , Soda, Bier, Japanische Getränke ": 3.50,
             };
 
-            const summerSpecialLunchMenuPriceList = {
+            const riceDishPriceList = {
                 "Curryカレー": 11.90,
                 "Don(丼) ": 10.90,
                 "Rice 単品": 2.20,
-                "牛丼": 14.90
             };
 
             const lunchMenuPriceList = {
-                "ランチ": 14.90
+                "Lunch/ランチ": 14.90
             };
 
             const otherItemPriceList = {
@@ -378,7 +377,7 @@
             Object.assign(price, warmDrinksPriceList);
             Object.assign(price, coldDrinksPriceList);
             Object.assign(price, lunchMenuPriceList);
-            Object.assign(price, summerSpecialLunchMenuPriceList);
+            Object.assign(price, riceDishPriceList);
             Object.assign(price, otherItemPriceList);
             Object.assign(price, vorspeisenPriceList);
 
@@ -449,8 +448,8 @@
             let coldDrinksArea = document.querySelector("#cold_drinks_area");
             addFoodItem(coldDrinksArea, coldDrinksPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
-            let summerSpecialLunchMenuArea = document.querySelector("#summer_special_lunch_menu_area");
-            addFoodItem(summerSpecialLunchMenuArea, summerSpecialLunchMenuPriceList, [0, 1, 2, 3]);
+            let riceDishArea = document.querySelector("#rice_dish_area");
+            addFoodItem(riceDishArea, riceDishPriceList, [0, 1, 2, 3]);
 
             let otherItemArea = document.querySelector("#other_item_area");
             addFoodItem(otherItemArea, otherItemPriceList, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,]);
